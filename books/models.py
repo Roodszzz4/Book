@@ -10,6 +10,8 @@ class Author(models.Model):
         return self.name
 
 
+
+
 class Genre(models.Model):
     title = models.CharField(max_length=30, null=True)
 
@@ -27,10 +29,14 @@ book_language = [
 class Book(models.Model):
     title = models.CharField(max_length=55)
     author_id = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='books')
+    amount_page = models.IntegerField(default=0)
     year_of_issue = models.DateField('date published')
     publishing_house = models.CharField(max_length=50)
     language = models.TextField(choices=book_language)
     genre = models.ManyToManyField(Genre, related_name='books')
+
+
+
 
     def genre_display(self):
         return '. '.join([genre.title for genre in self.genre.all()])
