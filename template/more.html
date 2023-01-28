@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h4>{{authors.name}}</h4>
+        <br>
+        <br>
+        <img src="{{authors.photo.url}}" class="img-fluid" width="100" height="100">
+        <br>
+        <br>
+        <br>
+        <h5>{{authors.biography}}</h5>
+
+    </div>
+
+
+{% endblock content %}
+
+

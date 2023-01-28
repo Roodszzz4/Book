@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.utils.safestring import mark_safe
+
 from .models import Book, Author, Genre
 
 
@@ -19,8 +21,13 @@ class BookAdmin(admin.ModelAdmin):
 
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = ['name', 'photo', 'count_book', 'short_add', 'title_book', 'sum_pages',]
+    list_display = ['name', 'get_photo', 'count_book', 'short_add', 'title_book', 'sum_pages',]
     inlines = [BookInLine, ]
+    readonly_fields = ['get_photo',]
+
+    def get_photo(self, obj):
+        return mark_safe(f"<img src={obj.photo.url} widht='50', height='60'")
+    get_photo.short_description = "Photo"
 
     def count_book(self, obj):
         return obj.books.count()

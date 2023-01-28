@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<br>
+<br>
+<ul>{% for authors in authors %}
+  <br>
+
+  <img src="{{authors.photo.url}}"
+       height="70"
+       width="70"
+       alt="...">
+
+
+  <li>{{ authors.name }}</li><br>
+        <p>{{ authors.biography|truncatewords:10}}</p>
+  <a href="{% url 'more' authors.id %}" class="btn btn-primary">More</a><br><br>
+{% endfor %}</ul>
+
+{% endblock %}

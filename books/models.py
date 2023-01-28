@@ -10,8 +10,6 @@ class Author(models.Model):
         return self.name
 
 
-
-
 class Genre(models.Model):
     title = models.CharField(max_length=30, null=True)
 
@@ -34,9 +32,6 @@ class Book(models.Model):
     publishing_house = models.CharField(max_length=50)
     language = models.TextField(choices=book_language)
     genre = models.ManyToManyField(Genre, related_name='books')
-
-
-
 
     def genre_display(self):
         return '. '.join([genre.title for genre in self.genre.all()])
