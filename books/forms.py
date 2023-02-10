@@ -9,3 +9,12 @@ class AuthorForm(forms.ModelForm):
     class Meta:
         model = Author
         fields = '__all__'
+
+class BookForm(forms.ModelForm):
+    title = forms.CharField(min_length=3)
+    date_published = forms.DateField(widget=forms.SelectDateWidget(years=[i for i in range(1900, 2032)]))
+
+    class Meta:
+        model = Book
+        fields = '__all__'
+        exclude = ['year_of_issue']

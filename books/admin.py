@@ -19,6 +19,7 @@ class BookAdmin(admin.ModelAdmin):
 
 
 
+
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ['name', 'get_photo', 'count_book', 'short_add', 'title_book', 'sum_pages',]

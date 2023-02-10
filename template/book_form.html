@@ -3,7 +3,7 @@
 
 <br><br><br><br>
 
-<form method="post" enctype="multipart/form-data" action="{% url 'add_author' %}">
+<form method="post" enctype="multipart/form-data" action="{% url 'add_book' %}">
   {% csrf_token %}
   {{form.as_p}}
 
